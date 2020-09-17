@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
+
+from audio import settings
 from editor.views import *
 
 urlpatterns = [
@@ -22,4 +25,4 @@ urlpatterns = [
     path('', index),
     path('get-sounds/', get_sounds),
     path('play/', play),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
