@@ -1,0 +1,2 @@
+sox
+django==2.2

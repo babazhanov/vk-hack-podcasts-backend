@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+    <div>GET: get-sounds</div>
+    <ul>
+        {% for sound in sounds %}
+        <li>{{sound.name}} {{sound.filename}}</li>
+        {% endfor %}
+    </ul>
+    <audio controls>
+        <source src="play/" type="audio/mpeg">
+        <source src="audio/music.mp3" type="audio/mpeg">
+        Тег audio не поддерживается вашим браузером.
+        <a href="audio/music.mp3">Скачайте музыку</a>.
+    </audio>
+</body>
+</html>
