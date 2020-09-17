@@ -1,2 +1,4 @@
 sox
 django==2.2
+django-heroku
+gunicorn

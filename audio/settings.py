@@ -122,3 +122,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Должно быть в конце файла
+if 'HEROKU' in os.environ:
+    import django_heroku
+    django_heroku.settings(locals())
