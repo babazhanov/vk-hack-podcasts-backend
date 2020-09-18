@@ -15,7 +15,7 @@ def index(request):
 
 
 def set_defaults(request, ignore_none=False):
-    if request.session["last_file"] is None or ignore_none:
+    if request.session.get("current_file") is None or ignore_none:
         sound_ids = Sound.objects.all().values_list('id', flat=True)
         pk = min(sound_ids)
         request.session["last_file"] = os.path.join('media/', Sound.objects.get(id=pk).filename)
