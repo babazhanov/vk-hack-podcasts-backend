@@ -6,6 +6,7 @@ import numpy as np
 
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
 from editor.models import Sound
 
@@ -53,7 +54,7 @@ def get_file_info(filename):
         "wave": wave_form.tolist()
     }
 
-
+@csrf_exempt
 def get_track(request):
     if request.method == "POST":
         pk = request.POST.get("id")
@@ -65,8 +66,11 @@ def get_track(request):
             request.session['current_file'] = request.session["last_file"]
 
         return JsonResponse(get_file_info(request.session['current_file']))
+    else:
+        return JsonResponse({"error": "Ожидается POST-запрос"})
 
 
+@csrf_exempt
 def cut(request):
     if request.method == "POST":
         set_defaults(request)
@@ -82,3 +86,6 @@ def cut(request):
         tfm.build(request.session['last_file'], request.session['current_file'])
 
         return JsonResponse(get_file_info(request.session['current_file']))
+
+    else:
+        return JsonResponse({"error": "Ожидается POST-запрос"})
