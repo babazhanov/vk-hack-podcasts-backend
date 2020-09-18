@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
@@ -125,6 +126,17 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_HEADERS = (
+    'Access-Control-Allow-Headers',
+    'Access-Control-Allow-Credentials',
+)
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+    'http://proggg.ml:5050'
+ ]
 
 # Должно быть в конце файла
 if 'HEROKU' in os.environ:

@@ -2,5 +2,5 @@ sox
 django==2.2
 django-heroku
 gunicorn
-django-cors-headers
+django-cors-headers==2.4.0
 numpy
