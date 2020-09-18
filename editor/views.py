@@ -1,3 +1,4 @@
+import json
 import os
 import wave
 import sox
@@ -55,10 +56,12 @@ def get_file_info(filename):
         "wave": wave_form.tolist()
     }
 
+
 @csrf_exempt
 def get_track(request):
     if request.method == "POST":
-        pk = request.POST.get("id")
+        json_data = json.loads(request.body)
+        pk = json_data.get("id")
         sound_ids = Sound.objects.all().values_list('id', flat=True)
         if pk not in sound_ids:
             set_defaults(request, True)
