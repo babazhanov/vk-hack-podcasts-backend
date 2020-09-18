@@ -47,6 +47,7 @@ def get_file_info(filename):
     # Extract Raw Audio from Wav File
     signal = spf.readframes(-1)
     signal = np.fromstring(signal, "Int16")
+    signal = signal[:(signal.shape[0] // sample_rate) * sample_rate]
     wave_form = np.max(np.abs(signal.reshape(-1, sample_rate)), axis=1)
 
     return {
