@@ -24,5 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
     path('get-sounds/', get_sounds),
+    path('get-track/', get_track),
+    path('cut/', cut),
     path('play/', play),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
