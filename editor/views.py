@@ -62,6 +62,7 @@ def get_track(request):
     if request.method == "POST":
         json_data = json.loads(request.body)
         pk = int(json_data.get("id"))
+        print(pk)
         sound_ids = Sound.objects.all().values_list('id', flat=True)
         if pk not in sound_ids:
             set_defaults(request, True)
