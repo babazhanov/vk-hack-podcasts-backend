@@ -61,7 +61,7 @@ def get_file_info(filename):
 def get_track(request):
     if request.method == "POST":
         json_data = json.loads(request.body)
-        pk = json_data.get("id")
+        pk = int(json_data.get("id"))
         sound_ids = Sound.objects.all().values_list('id', flat=True)
         if pk not in sound_ids:
             set_defaults(request, True)
